@@ -1,7 +1,7 @@
+import Layout from '../components/Layout';
+import TeamMemberForm from '../components/TeamMemberForm';
+import PersonalityCard from '../components/PersonalityCard';
 
-import { useMemo, useState } from "react";
-import Layout from "@/components/Layout";
-import TeamMemberForm from "@/components/TeamMemberForm";
 import PersonalityCard from "@/components/PersonalityCard";
 import { SAMPLE_TEAM } from "@/data/sampleTeam";
 
