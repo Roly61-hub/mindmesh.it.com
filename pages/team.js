@@ -1,8 +1,10 @@
-import Layout from '../components/Layout';
-import TeamMemberForm from '../components/TeamMemberForm';
-import PersonalityCard from '../components/PersonalityCard';
+import { useState, useMemo } from "react";
 
+// Correct imports (use one consistent style)
+import Layout from "@/components/Layout";
+import TeamMemberForm from "@/components/TeamMemberForm";
 import PersonalityCard from "@/components/PersonalityCard";
+
 import { SAMPLE_TEAM } from "@/data/sampleTeam";
 
 function buildCompatibilityNarrative(team) {
@@ -12,6 +14,7 @@ function buildCompatibilityNarrative(team) {
 
 export default function TeamPage() {
   const [team, setTeam] = useState(SAMPLE_TEAM);
+
   const compatibilitySummary = useMemo(
     () => buildCompatibilityNarrative(team),
     [team]
@@ -21,8 +24,15 @@ export default function TeamPage() {
     <Layout>
       <main>
         <h1>Team Analyzer</h1>
-        <TeamMemberForm onAdd={(m)=>setTeam(prev=>[...prev,m])} />
-        {team.map(m => <PersonalityCard key={m.name+m.mbti} member={m} />)}
+
+        <TeamMemberForm
+          onAdd={(m) => setTeam((prev) => [...prev, m])}
+        />
+
+        {team.map((m) => (
+          <PersonalityCard key={m.name + m.mbti} member={m} />
+        ))}
+
         <p>{compatibilitySummary}</p>
       </main>
     </Layout>
